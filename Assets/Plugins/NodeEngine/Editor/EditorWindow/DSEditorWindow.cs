@@ -7,14 +7,15 @@ namespace NodeEngine.Window
 {
     public class DSEditorWindow : EditorWindow
     {
+        public StyleSheet StyleSheet;
         private string stylesLink = "Assets/Plugins/NodeEngine/Resources/Front/NodeEngineVariables.uss";
         DSGraphView grathView;
 
 
-        [MenuItem("DES/Dialogue Graph")]
+        [MenuItem("NodeEngine/OpenWindow")]
         public static void OpenWindow()
         {
-            GetWindow<DSEditorWindow>("Dialogue Graph");
+            GetWindow<DSEditorWindow>("Graph");
         }
 
         private void OnEnable()
@@ -36,7 +37,7 @@ namespace NodeEngine.Window
         private void AddToolbar()
         {
             DSToolbar toolbar = new(grathView);
-            toolbar.Initialize("DialogueFileName", "Filename: ");
+            toolbar.Initialize("Toolbar", "Filename: ");
             rootVisualElement.Add(toolbar);
         }
         #endregion
@@ -44,7 +45,8 @@ namespace NodeEngine.Window
         #region Styles
         private void AddStyles()
         {
-            rootVisualElement.LoadAndAddStyleSheets(stylesLink);
+            if (StyleSheet == null) rootVisualElement.LoadAndAddStyleSheets(stylesLink);
+            else rootVisualElement.LoadAndAddStyleSheets(StyleSheet);
         }
         #endregion
 

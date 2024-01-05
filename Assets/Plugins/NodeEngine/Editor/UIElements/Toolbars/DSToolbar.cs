@@ -76,7 +76,7 @@ namespace NodeEngine.Toolbars
             {
                 "ds-toolbar__button"
             });
-            generateScriptButton = DSUtilities.CreateButton("Generate DialogueScript", GenerateScript, new string[]
+            generateScriptButton = DSUtilities.CreateButton("SomeBtn", SomeBtnFunction, new string[]
             {
                 "ds-toolbar__button"
             });
@@ -109,7 +109,7 @@ namespace NodeEngine.Toolbars
             textField.value = graphView.Load(path);
         }
         private void CleanGraph() => graphView.CleanGraph();
-        private void GenerateScript()
+        private void SomeBtnFunction()
         {
             string path = EditorUtility.SaveFilePanel("Select a graph file", Application.dataPath, textField.value, "cs");
             Debug.Log("Save on: " + path);
